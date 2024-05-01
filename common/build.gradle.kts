@@ -14,15 +14,8 @@ kotlin {
         }
         commonMain {
             dependencies {
-                api("io.github.pdvrieze.xmlutil:serialization:0.86.3")
                 api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
                 api("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.3")
-            }
-        }
-        
-        jvmMain {
-            dependencies {
-                api("net.bramp.ffmpeg:ffmpeg:0.8.0")
             }
         }
         

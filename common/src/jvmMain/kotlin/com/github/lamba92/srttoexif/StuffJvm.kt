@@ -6,8 +6,8 @@ import kotlinx.coroutines.withContext
 
 actual typealias File = java.io.File
 
-actual suspend fun File.patchCoordinates(metadata: XMPMeta.RDF.SRTMetadata): Unit = withContext(Dispatchers.IO) {
-    TODO()
-}
 
+actual suspend fun File.patchCoordinates(metadata: SRTMetadata): Unit = withContext(Dispatchers.IO) {
+
+}
 

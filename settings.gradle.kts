@@ -1,4 +1,4 @@
-rootProject.name = "srt-to-exif"
+rootProject.name = "srt-to-xmp"
 
 pluginManagement {
     repositories {
