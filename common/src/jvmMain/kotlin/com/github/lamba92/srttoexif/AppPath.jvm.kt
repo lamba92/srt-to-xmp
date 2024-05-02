@@ -9,9 +9,7 @@ import kotlin.io.path.inputStream
 import kotlin.io.path.isDirectory
 import kotlin.io.path.name
 import kotlin.io.path.nameWithoutExtension
-import kotlin.io.path.readLines
 import kotlin.io.path.readText
-import kotlin.io.path.walk
 import kotlin.io.path.writeText
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
