@@ -10,12 +10,14 @@ kotlin {
         all {
             languageSettings {
                 optIn("kotlinx.serialization.ExperimentalSerializationApi")
+                optIn("kotlin.io.path.ExperimentalPathApi")
             }
         }
         commonMain {
             dependencies {
                 api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
                 api("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.3")
+                api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
             }
         }
         
