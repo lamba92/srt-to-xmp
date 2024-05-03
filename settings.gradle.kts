@@ -1,6 +1,6 @@
 @file:Suppress("UnstableApiUsage")
 
-rootProject.name = "srt-to-xmp"
+rootProject.name = "geopatcher"
 
 pluginManagement {
     repositories {
@@ -16,6 +16,7 @@ pluginManagement {
         kotlin("plugin.serialization") version kotlinVersion
         id("org.jetbrains.compose") version "1.6.2"
         id("com.android.application") version "8.4.0"
+        id("dev.icerock.mobile.multiplatform-resources") version "0.24.0-beta-2"
     }
 }
 
@@ -34,5 +35,6 @@ include(
     ":common",
     ":common:ui",
     ":apps",
-    ":apps:android"
+    ":apps:android",
+    ":apps:desktop"
 )
