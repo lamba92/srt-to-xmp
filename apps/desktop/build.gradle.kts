@@ -26,5 +26,4 @@ dependencies {
 
 multiplatformResources {
     resourcesPackage = "org.github.lamba92.geopatcher.resources.desktop"
-    resourcesClassName = "DesktopRes"
 }

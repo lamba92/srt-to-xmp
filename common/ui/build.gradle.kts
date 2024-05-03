@@ -1,5 +1,6 @@
 plugins {
     convention
+    `kmp-resource-fix`
     kotlin("multiplatform")
     kotlin("plugin.serialization")
     id("org.jetbrains.compose")
@@ -20,13 +21,12 @@ kotlin {
         commonMain {
             dependencies {
                 api(projects.common)
-                api("io.insert-koin:koin-core:3.5.6")
                 api("dev.icerock.moko:resources:0.24.0-beta-2")
                 api("dev.icerock.moko:resources-compose:0.24.0-beta-2")
                 api("org.jetbrains.compose.material3:material3:1.6.2")
                 api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
                 api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-                api("dev.icerock.moko:mvvm-compose:0.16.1")
+                api("org.kodein.di:kodein-di:7.21.1")
             }
         }
     }
@@ -35,4 +35,10 @@ kotlin {
 multiplatformResources {
     resourcesPackage = "org.github.lamba92.geopatcher.resources"
     resourcesClassName = "Res"
+}
+
+tasks {
+    named("generateMRjvmMain") {
+        println(this::class.qualifiedName)
+    }
 }

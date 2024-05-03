@@ -13,7 +13,7 @@ import androidx.compose.ui.SystemTheme.Dark
 @Composable
 fun App() {
     val colors = if (LocalSystemTheme.current == Dark) darkColorScheme() else lightColorScheme()
-    val viewModel = getViewModel<AppViewModel>()
+    val viewModel by getViewModel<AppViewModel>()
     MaterialTheme(colors) {
         ModalNavigationDrawer(
             drawerContent = {

@@ -1,3 +1,7 @@
+@file:Suppress("UnstableApiUsage")
+
+rootProject.name = "buildSrc"
+
 pluginManagement {
     repositories {
         google()
