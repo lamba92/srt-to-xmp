@@ -117,13 +117,14 @@ class AppViewModel(
         get() = combine(
             isSortingReversed,
             sortedBy,
-            groupByType
-        ) { isSortingReversed, sortedBy, groupByType ->
+            groupByType,
+            recentPaths
+        ) { isSortingReversed, sortedBy, groupByType, recentPaths ->
             AppCache(
                 groupByType = groupByType,
                 sortedBy = sortedBy,
                 isSortingReversed = isSortingReversed,
-                recentPaths = recentPaths.value.map { it.pathString }
+                recentPaths = recentPaths
             )
         }
 
@@ -135,8 +136,6 @@ class AppViewModel(
 
         if (settings != null) {
             val paths = settings.recentPaths
-                .map { AppPath(it) }
-                .filterIsInstance<AppPath.Directory>()
             _recentPaths.emit(paths)
             _selectedDirectory.emit(paths.firstOrNull())
             _isSortingReversed.emit(settings.isSortingReversed)

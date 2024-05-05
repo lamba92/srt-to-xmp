@@ -1,11 +1,13 @@
 plugins {
     convention
-    kotlin("multiplatform")
-    kotlin("plugin.serialization")
+    id(libs.plugins.jetbrains.kotlin.multiplatform)
+    id(libs.plugins.kotlinx.serialization)
+    id(libs.plugins.android.library)
 }
 
 kotlin {
     jvm()
+    androidTarget()
     sourceSets {
         all {
             languageSettings {
@@ -13,21 +15,55 @@ kotlin {
                 optIn("kotlin.io.path.ExperimentalPathApi")
             }
         }
+
         commonMain {
             dependencies {
-                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
-                api("org.jetbrains.kotlinx:kotlinx-serialization-core:1.6.3")
-                api("org.jetbrains.kotlinx:kotlinx-datetime:0.5.0")
+                api(libs.kotlinx.coroutines)
+                api(libs.kotlinx.serialization.core)
+                api(libs.kotlinx.datetime)
             }
         }
         
         jvmTest {
             dependencies {
                 implementation(kotlin("test-junit5"))
-                implementation("org.junit.jupiter:junit-jupiter-api:5.9.1")
-                runtimeOnly("org.junit.jupiter:junit-jupiter-engine:5.9.1")
+                implementation(libs.junit.jupiter.api)
+                runtimeOnly(libs.junit.jupiter.engine)
             }
         }
+
+        val jvmCommonMain by creating {
+            dependsOn(commonMain.get())
+        }
+
+        jvmMain {
+            dependsOn(jvmCommonMain)
+        }
+
+        androidMain {
+            dependsOn(jvmCommonMain)
+            dependencies {
+                api(libs.isoparser)
+            }
+        }
+    }
+}
+
+android {
+    namespace = "com.github.lamba92.geopatcher"
+    compileSdk = 34
+
+    defaultConfig {
+        minSdk = 28
+    }
+
+    compileOptions {
+        sourceCompatibility = JavaVersion.VERSION_1_8
+        targetCompatibility = JavaVersion.VERSION_1_8
+    }
+
+    buildFeatures {
+        compose = false
     }
 }
 

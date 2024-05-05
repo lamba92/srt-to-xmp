@@ -8,12 +8,6 @@ pluginManagement {
         mavenCentral()
         gradlePluginPortal()
     }
-    plugins {
-        val kotlinVersion = "1.9.23"
-        kotlin("plugin.serialization") version kotlinVersion
-        id("org.jetbrains.compose") version "1.6.2"
-        id("com.android.application") version "8.4.0"
-    }
 }
 
 plugins {

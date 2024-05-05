@@ -19,27 +19,27 @@ actual class MetadataPatcher(private val exifToolsPath: AppPath) {
     // example:
     // -Keys:GPSCoordinates="40.6892, -74.0445, 0" -Userdata:GPSCoordinates="40.6892, -74.0445, 0"
     //      -Itemlist:GPSCoordinates="40.6892, -74.0445, 0"
-    actual suspend fun patchMetadata(input: AppPath, metadata: GeoCoordinates): Unit = withContext(Dispatchers.IO) {
+    actual suspend fun patchMetadata(input: AppPath.File, metadata: GeoCoordinates): Unit = withContext(Dispatchers.IO) {
         val absolute = metadata.asAbsolute()
         ProcessBuilder()
             .command(
-                exifToolsPath.toAbsolutePath().pathString,
+                exifToolsPath.toAbsoluteAppPath().pathString,
                 "-Keys:GPSCoordinates=\"${absolute.latitude}, ${absolute.longitude}, 0\"",
                 "-Userdata:GPSCoordinates=\"${absolute.latitude}, ${absolute.longitude}, 0\"",
                 "-Itemlist:GPSCoordinates=\"${absolute.latitude}, ${absolute.longitude}, 0\"",
-                input.toAbsolutePath().pathString,
+                input.toAbsoluteAppPath().pathString,
             )
             .start()
             .waitFor()
     }
 
-    actual suspend fun readMetadata(input: AppPath): GeoCoordinates? = withContext(Dispatchers.IO) {
+    actual suspend fun readMetadata(input: AppPath.File): GeoCoordinates? = withContext(Dispatchers.IO) {
         val process = ProcessBuilder()
             .command(
-                exifToolsPath.toAbsolutePath().pathString,
+                exifToolsPath.toAbsoluteAppPath().pathString,
                 "-GPSCoordinates",
                 "-n",
-                input.toAbsolutePath().pathString,
+                input.toAbsoluteAppPath().pathString,
             )
             .start()
         val output = process.inputStream.bufferedReader().readText()

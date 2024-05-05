@@ -1,10 +1,10 @@
 plugins {
     convention
     `kmp-resource-fix`
-    kotlin("multiplatform")
-    kotlin("plugin.serialization")
-    id("org.jetbrains.compose")
-    id("dev.icerock.mobile.multiplatform-resources")
+    id(libs.plugins.jetbrains.kotlin.multiplatform)
+    id(libs.plugins.kotlinx.serialization)
+    id(libs.plugins.compose.multiplatform)
+    id(libs.plugins.moko.multiplatform.resources)
 }
 
 kotlin {
@@ -21,12 +21,12 @@ kotlin {
         commonMain {
             dependencies {
                 api(projects.common)
-                api("dev.icerock.moko:resources:0.24.0-beta-2")
-                api("dev.icerock.moko:resources-compose:0.24.0-beta-2")
-                api("org.jetbrains.compose.material3:material3:1.6.2")
-                api("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.8.0")
-                api("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.3")
-                api("org.kodein.di:kodein-di:7.21.1")
+                api(libs.moko.resources)
+                api(libs.moko.resources.compose)
+                api(libs.jetbrains.material3)
+                api(libs.kotlinx.coroutines)
+                api(libs.kotlinx.serialization.json)
+                api(libs.kodein.di)
             }
         }
     }

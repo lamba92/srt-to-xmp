@@ -9,8 +9,6 @@ import androidx.compose.material3.ModalNavigationDrawer
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.VerticalDivider
-import androidx.compose.material3.darkColorScheme
-import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.collectAsState
@@ -18,11 +16,8 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.runtime.setValue
-import androidx.compose.ui.LocalSystemTheme
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.SystemTheme.Dark
 import androidx.compose.ui.layout.onSizeChanged
-import androidx.compose.ui.platform.LocalDensity
 import androidx.compose.ui.unit.IntSize
 
 
@@ -44,15 +39,19 @@ fun App(colors: ColorScheme) = MeasuredBox { (width) ->
             val recentPaths by viewModel.recentPaths.collectAsState()
             val selectedPath by viewModel.selectedDirectory.collectAsState()
             val isSmallScreen = width < 840
+
+            var isAnimationCompleted by remember(isSmallScreen) { mutableStateOf(false) }
+
             LaunchedEffect(isSmallScreen) {
                 when {
                     isSmallScreen -> viewModel.drawerState.close()
                     else -> viewModel.drawerState.open()
                 }
+                isAnimationCompleted = true
             }
 
             when {
-                isSmallScreen -> ModalNavigationDrawer(
+                isSmallScreen || !isAnimationCompleted -> ModalNavigationDrawer(
                     modifier = Modifier.fillMaxSize(),
                     drawerState = viewModel.drawerState,
                     drawerContent = {
@@ -78,10 +77,8 @@ fun App(colors: ColorScheme) = MeasuredBox { (width) ->
                     VerticalDivider()
                     Text("Hello, World!")
                 }
+
             }
         }
     }
 }
-
-@Composable
-private fun isScreenSmall(size: IntSize) = size.width < 840 * LocalDensity.current.density

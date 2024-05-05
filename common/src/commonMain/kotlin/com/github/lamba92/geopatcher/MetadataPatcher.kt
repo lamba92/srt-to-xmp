@@ -3,6 +3,6 @@
 package com.github.lamba92.geopatcher
 
 expect class MetadataPatcher {
-    suspend fun patchMetadata(input: AppPath, metadata: GeoCoordinates)
-    suspend fun readMetadata(input: AppPath): GeoCoordinates?
+    suspend fun patchMetadata(input: AppPath.File, metadata: GeoCoordinates)
+    suspend fun readMetadata(input: AppPath.File): GeoCoordinates?
 }

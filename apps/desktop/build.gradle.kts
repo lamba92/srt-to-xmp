@@ -2,10 +2,10 @@
 
 plugins {
     convention
-    kotlin("jvm")
-    kotlin("plugin.serialization")
-    id("org.jetbrains.compose")
-    id("dev.icerock.mobile.multiplatform-resources")
+    id(libs.plugins.jetbrains.kotlin.jvm)
+    id(libs.plugins.kotlinx.serialization)
+    id(libs.plugins.compose.multiplatform)
+    id(libs.plugins.moko.multiplatform.resources)
 }
 
 kotlin {
@@ -25,12 +25,12 @@ kotlin {
 
 dependencies {
     implementation(projects.common.ui)
-    implementation("org.jetbrains.compose.desktop:desktop-jvm-linux-x64:1.6.2")
-    implementation("org.jetbrains.compose.desktop:desktop-jvm-macos-arm64:1.6.2")
-    implementation("org.jetbrains.compose.desktop:desktop-jvm-macos-x64:1.6.2")
-    implementation("org.jetbrains.compose.desktop:desktop-jvm-windows-x64:1.6.2")
-    implementation("com.github.Dansoftowner:jSystemThemeDetector:3.6")
-    implementation("com.mayakapps.compose:window-styler:0.3.3-SNAPSHOT")
+    implementation(libs.compose.desktop.jvm.linux.x64)
+    implementation(libs.compose.desktop.jvm.macos.arm64)
+    implementation(libs.compose.desktop.jvm.macos.x64)
+    implementation(libs.compose.desktop.jvm.windows.x64)
+    implementation(libs.jsystemthemedetector)
+    implementation(libs.window.styler)
 }
 
 multiplatformResources {

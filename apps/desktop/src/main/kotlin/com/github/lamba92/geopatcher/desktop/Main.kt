@@ -1,6 +1,5 @@
 package com.github.lamba92.geopatcher.desktop
 
-import androidx.compose.material.MaterialTheme.colors
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable

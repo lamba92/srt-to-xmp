@@ -1,5 +1,8 @@
 package com.github.lamba92.geopatcher
 
+import kotlinx.serialization.Serializable
+
+@Serializable
 data class FileSize(val bytes: Long) : Comparable<FileSize> {
 
     init {
