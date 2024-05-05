@@ -17,6 +17,7 @@ plugins.withId("org.jetbrains.kotlin.multiplatform") {
                 if (this !is KotlinCompilationWithResources) return@compilation
                 tasks.named<ProcessResources>(processResourcesTaskName) {
                     from(allKotlinSourceSets.flatMap { it.resources.srcDirs })
+                    duplicatesStrategy = DuplicatesStrategy.INCLUDE
                 }
                 tasks.named<KotlinCompile>(compileKotlinTaskName) {
                     doLast {

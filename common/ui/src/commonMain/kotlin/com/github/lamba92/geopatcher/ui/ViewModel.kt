@@ -193,12 +193,10 @@ class AppViewModel(
         }
     }
 
-    fun toggleDrawer() {
-        viewModelScope.launch {
-            when (drawerState.currentValue) {
-                DrawerValue.Closed -> drawerState.open()
-                DrawerValue.Open -> drawerState.close()
-            }
+    suspend fun toggleDrawer() {
+        when (drawerState.currentValue) {
+            DrawerValue.Closed -> drawerState.open()
+            DrawerValue.Open -> drawerState.close()
         }
     }
 

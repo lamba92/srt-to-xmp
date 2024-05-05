@@ -31,14 +31,11 @@ kotlin {
         }
     }
 }
-
-multiplatformResources {
-    resourcesPackage = "org.github.lamba92.geopatcher.resources"
-    resourcesClassName = "Res"
+repositories {
+    mavenCentral()
 }
 
-tasks {
-    named("generateMRjvmMain") {
-        println(this::class.qualifiedName)
-    }
+multiplatformResources {
+    resourcesPackage = "com.github.lamba92.geopatcher.resources"
+    resourcesClassName = "Res"
 }
