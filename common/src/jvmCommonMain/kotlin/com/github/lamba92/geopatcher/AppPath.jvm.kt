@@ -15,6 +15,7 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.withContext
 import kotlinx.datetime.Instant
 import kotlinx.datetime.toKotlinInstant
+import java.io.File
 import kotlin.io.path.deleteExisting
 import kotlin.io.path.deleteRecursively
 import kotlin.io.path.moveTo
@@ -24,9 +25,12 @@ import kotlin.io.path.Path as NioPath
 actual fun AppPath(path: String): AppPath = NioPath(path).toAppPath()
 
 fun NioPath.toAppPath(): AppPath = when {
-    isDirectory() -> AppPathDirectoryImpl(this)
+    endsWith("\\") || endsWith("/") || isDirectory() -> AppPathDirectoryImpl(this)
     else -> AppPathFileImpl(this)
 }
+
+actual fun AppPathDirectory(path: String): AppPath.Directory = AppPathDirectoryImpl(NioPath(path))
+actual fun AppPathFile(path: String): AppPath.File = AppPathFileImpl(NioPath(path))
 
 class AppPathFileImpl(val delegate: NioPath) : AppPath.File {
     override val size: FileSize
@@ -135,3 +139,5 @@ private fun Path.getCreationTime(): Instant {
     val creationTime = getAttribute("creationTime") as FileTime
     return creationTime.toInstant().toKotlinInstant()
 }
+
+actual val FileSeparator: String = File.separator

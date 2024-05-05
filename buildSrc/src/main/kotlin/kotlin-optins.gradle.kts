@@ -13,5 +13,6 @@ extensions.findByType<KotlinProjectExtension>()?.sourceSets?.all {
         optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
         optIn("kotlinx.coroutines.FlowPreview")
         optIn("kotlinx.serialization.ExperimentalSerializationApi")
+        optIn("androidx.compose.ui.ExperimentalComposeUiApi")
     }
 }

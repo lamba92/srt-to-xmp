@@ -22,7 +22,8 @@ sealed interface AppFile {
         data class Video(
             override val path: AppPath.File,
             override val location: GeoCoordinates?,
-            override val hasSrtFile: Boolean
+            override val hasSrtFile: Boolean,
+            val thumbnails: List<AppPath.File>
         ) : Multimedia
     }
 

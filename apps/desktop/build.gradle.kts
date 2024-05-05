@@ -29,3 +29,11 @@ dependencies {
 multiplatformResources {
     resourcesPackage = "com.github.lamba92.geopatcher.resources.desktop"
 }
+
+compose {
+    desktop {
+        application {
+            mainClass = "com.github.lamba92.geopatcher.desktop.MainKt"
+        }
+    }
+}

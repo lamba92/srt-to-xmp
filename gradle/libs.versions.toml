@@ -1,6 +1,9 @@
 [versions]
 agp = "8.4.0"
+coilCompose = "3.0.0-alpha06"
+collection = "1.4.0"
 isoparser = "1.1.22"
+javacv = "1.5.10"
 mp4Isoparser = "1.9.56"
 jsystemthemedetector = "3.6"
 junitJupiterApi = "5.10.0"
@@ -22,12 +25,17 @@ mokoResources = "0.24.0-beta-2"
 windowStyler = "0.3.3-SNAPSHOT"
 
 [libraries]
+androidx-collection = { module = "androidx.collection:collection", version.ref = "collection" }
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
+coil-compose = { module = "io.coil-kt.coil3:coil-compose", version.ref = "coilCompose" }
+coil-video = { module = "io.coil-kt.coil3:coil-video", version.ref = "coilCompose" }
 compose-desktop-jvm-linux-x64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-linux-x64", version.ref = "composeMultiplatform" }
 compose-desktop-jvm-macos-x64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-macos-x64", version.ref = "composeMultiplatform" }
 compose-desktop-jvm-macos-arm64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-macos-arm64", version.ref = "composeMultiplatform" }
 compose-desktop-jvm-windows-x64 = { module = "org.jetbrains.compose.desktop:desktop-jvm-windows-x64", version.ref = "composeMultiplatform" }
 isoparser = { module = "com.googlecode.mp4parser:isoparser", version.ref = "isoparser" }
+javacv = { module = "org.bytedeco:javacv", version.ref = "javacv" }
+javacv-platform = { module = "org.bytedeco:javacv-platform", version.ref = "javacv" }
 mp4-isoparser = { module = "org.mp4parser:isoparser", version.ref = "mp4Isoparser" }
 jsystemthemedetector = { module = "com.github.Dansoftowner:jSystemThemeDetector", version.ref = "jsystemthemedetector" }
 junit = { group = "junit", name = "junit", version.ref = "junit" }

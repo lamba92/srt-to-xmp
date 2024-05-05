@@ -80,3 +80,8 @@ sealed interface AppPath {
 }
 
 expect fun AppPath(path: String): AppPath
+
+expect fun AppPathDirectory(path: String): AppPath.Directory
+expect fun AppPathFile(path: String): AppPath.File
+
+expect val FileSeparator: String

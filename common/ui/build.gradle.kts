@@ -22,10 +22,14 @@ kotlin {
                 api(libs.kodein.di)
             }
         }
+        jvmMain {
+            dependencies {
+                implementation(libs.javacv)
+                implementation(libs.javacv.platform)
+                implementation(libs.androidx.collection)
+            }
+        }
     }
-}
-repositories {
-    mavenCentral()
 }
 
 multiplatformResources {

@@ -5,6 +5,7 @@ import androidx.compose.foundation.lazy.grid.LazyGridState
 import androidx.compose.material3.DrawerState
 import androidx.compose.material3.DrawerValue
 import com.github.lamba92.geopatcher.AppPath
+import com.github.lamba92.geopatcher.AppPathDirectory
 import com.github.lamba92.geopatcher.MetadataPatcher
 import com.github.lamba92.geopatcher.parseMetadataFromSRT
 import kotlin.time.Duration.Companion.seconds
