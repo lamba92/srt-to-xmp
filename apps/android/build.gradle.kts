@@ -2,6 +2,7 @@ plugins {
     convention
     id(libs.plugins.jetbrains.kotlin.android)
     id(libs.plugins.android.application)
+    `kotlin-optins`
 }
 
 kotlin {

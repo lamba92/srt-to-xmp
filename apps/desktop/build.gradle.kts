@@ -6,20 +6,13 @@ plugins {
     id(libs.plugins.kotlinx.serialization)
     id(libs.plugins.compose.multiplatform)
     id(libs.plugins.moko.multiplatform.resources)
+    `kotlin-optins`
 }
 
 kotlin {
     jvmToolchain {
         vendor = JvmVendorSpec.JETBRAINS
         languageVersion = JavaLanguageVersion.of(17)
-    }
-    sourceSets {
-        all {
-            languageSettings {
-                optIn("kotlinx.coroutines.DelicateCoroutinesApi")
-                optIn("androidx.compose.runtime.InternalComposeApi")
-            }
-        }
     }
 }
 

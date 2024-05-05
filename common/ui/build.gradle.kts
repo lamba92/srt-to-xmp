@@ -5,19 +5,12 @@ plugins {
     id(libs.plugins.kotlinx.serialization)
     id(libs.plugins.compose.multiplatform)
     id(libs.plugins.moko.multiplatform.resources)
+    `kotlin-optins`
 }
 
 kotlin {
     jvm()
     sourceSets {
-        all {
-            languageSettings {
-                optIn("kotlinx.coroutines.FlowPreview")
-                optIn("kotlinx.coroutines.ExperimentalCoroutinesApi")
-                optIn("androidx.compose.foundation.ExperimentalFoundationApi")
-                optIn("androidx.compose.runtime.InternalComposeApi")
-            }
-        }
         commonMain {
             dependencies {
                 api(projects.common)

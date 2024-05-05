@@ -3,18 +3,13 @@ plugins {
     id(libs.plugins.jetbrains.kotlin.multiplatform)
     id(libs.plugins.kotlinx.serialization)
     id(libs.plugins.android.library)
+    `kotlin-optins`
 }
 
 kotlin {
     jvm()
     androidTarget()
     sourceSets {
-        all {
-            languageSettings {
-                optIn("kotlinx.serialization.ExperimentalSerializationApi")
-                optIn("kotlin.io.path.ExperimentalPathApi")
-            }
-        }
 
         commonMain {
             dependencies {
